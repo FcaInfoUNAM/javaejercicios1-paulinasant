@@ -6,10 +6,12 @@ import java.util.HashMap;
 
 
 public class Colecciones {
-    ArrayList<String> cars ;
-    String[] bikes;
-    Set<String> bicicles;
-    HashMap<Integer, String> transport;
+    public ArrayList<String> cars ;
+    public String[] bikes;
+    public Set<String> bicicles;
+    public HashMap<Integer, String> transport;
+        
+   
 
     public Colecciones(){
         this.cars = new ArrayList<String>();
@@ -38,10 +40,34 @@ public class Colecciones {
         this.bicicles.add("AURUMANIA CRYSTAL EDITION GOLD BIKE");
     }
 
-    public HashMap<Integer, String>  obtenerHash(){
-        int length = cars.size() + bikes.length + bicicles.size();// obtener tamaño
-        int count =1;
-        //this.transport.forEach((key, value) -> System.out.println(key + " " + value)); //imprimir para pruebas
+public HashMap<Integer, String> obtenerHash() {
+        HashSet<String> uniqueElements = new HashSet<>();  // Conjunto de elementos únicos
+        
+        // Agregar todos los elementos de `cars`
+        uniqueElements.addAll(this.cars);
+
+        // Agregar todos los elementos de `bikes` (evitando nulos y vacíos)
+        for (String bike : this.bikes) {
+            if (bike != null && !bike.trim().isEmpty()) {
+                uniqueElements.add(bike);
+            }
+        }
+
+        // Agregar todos los elementos de `bicicles`
+        uniqueElements.addAll(this.bicicles);
+
+        // Llenar el HashMap `transport` con elementos únicos
+        this.transport.clear();  
+        int count = 1;
+        for (String element : uniqueElements) {
+            this.transport.put(count++, element);
+        }
+
+        return this.transport;  
+    }
+
+    // Método getter para obtener `transport`
+    public HashMap<Integer, String> getTransport() {
         return this.transport;
     }
 }

@@ -12,7 +12,7 @@ public class Sobrecarga {
         this.calificacion = calificacion;
     }
     public String reprobar(){
-        if (this.calificacion>5)
+        if (this.calificacion > 5)
             return "true";
         else
             return "false";
@@ -27,25 +27,18 @@ public class Sobrecarga {
             super(nombre, materia, calificacion);
         }
         public String reprobar(){
-            if(this.calificacion>5)
+            if(this.calificacion > 5)
                 return ">:) Sacaste "+this.calificacion+" en " + this.materia;
             else
                 return ":(";
         }
     }
-
-    /**
+ 
+    /*
      * Alumno
      */
-    class Alumno extends Sobrecarga{
-        public Alumno(String nombre, String materia, int calificacion){
-            super(nombre, materia, calificacion);
-        }
-        public String reprobar(){
+ 
 
-        }
-        
-    }
 
 }
 
